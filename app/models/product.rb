@@ -11,7 +11,6 @@ class Product < ApplicationRecord
 
   has_one :promotion, dependent: :destroy
   has_one :item_promo, through: :promotions
-  has_one :price_promo, through: :promotions
 
 
   def format_name
