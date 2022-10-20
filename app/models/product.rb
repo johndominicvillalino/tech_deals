@@ -1,6 +1,25 @@
 class Product < ApplicationRecord
   include ActiveModel::Serializers::JSON
-  has_one :promotion
-  has_many :item_promo, through: :promotions
-  has_many :price_promo, through: :promotions
+
+  before_save :format_name
+  after_save :set_sku
+
+  validates :name, presence: true
+  validates :price, presence: true
+  validates :price, numericality: { other_than: 0 }
+
+
+  has_one :promotion, dependent: :destroy
+  has_one :item_promo, through: :promotions
+  has_one :price_promo, through: :promotions
+
+
+  def format_name
+    self.name = name.capitalize
+  end
+
+  def set_sku
+    self.sku = "#{name[0]}#{id}"
+  end
+
 end

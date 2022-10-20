@@ -1,5 +1,5 @@
 class Promotion < ApplicationRecord
   belongs_to :product
-  has_many :item_promo
-  has_many :price_promo
+  has_one :item_promo, dependent: :destroy
+  has_one :price_promo, dependent: :destroy
 end
