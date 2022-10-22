@@ -8,25 +8,24 @@ class PromotionsController < ApplicationController
     end
 
     def create_promotions
-
         @promo = Promotion.new promo_params
-
         if @promo.save 
             render json: @promo, status: :created
         else
             render json: @promo.errors.full_messages, status: :unprocessable_entity
         end
-    
     end
 
     def deactivate_promo
         @promotion = Promotion.find(promo_params[:id])
         @promotion.is_active = promo_params[:is_active]
-            if @promotion.save 
-                render json: @promotion, status: :created
-            else
-                render json: @promotion.errors.full_messages, status: :unprocessable_entity
-            end
+
+        if @promotion.save 
+         render json: @promotion, status: :created
+        else
+         render json: @promotion.errors.full_messages, status: :unprocessable_entity
+        end
+        
     end
 
 

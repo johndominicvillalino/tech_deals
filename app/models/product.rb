@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   include ActiveModel::Serializers::JSON
 
   before_save :format_name
-  after_save :set_sku
+  after_save :set_sku 
 
   validates :name, presence: true
   validates :price, presence: true
@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   end
 
   def set_sku
-    self.sku = "#{name[0]}#{id}"
+    self.update_column(:sku, "#{name[0]}#{id}")
   end
 
 end

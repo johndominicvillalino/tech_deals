@@ -26,11 +26,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_071114) do
     t.string "promo_type"
     t.string "description"
     t.bigint "product_id"
-    t.boolean "is_active", default: true
-    t.string "sku_free", default: [], array: true
     t.float "percent_discount"
     t.float "min_value"
     t.integer "min_quantity"
+    t.string "trigger"
+    t.float "specific_discount_amount"
+    t.string "free_items", default: [], array: true
+    t.boolean "is_active", default: true
+    t.float "min_value_cart"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_promotions_on_product_id"
