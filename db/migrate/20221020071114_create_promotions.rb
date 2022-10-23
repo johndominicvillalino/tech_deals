@@ -9,7 +9,7 @@ class CreatePromotions < ActiveRecord::Migration[7.0]
       t.integer :min_quantity
       t.string :trigger
       t.float :specific_discount_amount 
-      t.string :free_items,  default: [], array: true
+      t.string :free_item
       t.boolean :is_active, default: true
       t.float :min_value_cart
       t.timestamps

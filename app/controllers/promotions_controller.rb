@@ -4,7 +4,7 @@ class PromotionsController < ApplicationController
 
     def get_promotions
         @promotions = Promotion.all
-        render json: @promotions
+        render json: @promotions.as_json(include: :product)
     end
 
     def create_promotions
@@ -30,13 +30,9 @@ class PromotionsController < ApplicationController
 
 
     def delete_promo
-         if Promotion.exists?(id:promo_params[:id])
-            @promotion = Promotion.find(promo_params[:id])
-            @promotion.destroy
-                render json: @promotion, status: :no_content
-            else
-                render json: @promotion.errors.full_messages, status: :unprocessable_entity
-            end
+         @product = Promotion.find(promo_params[:id])
+         @product.destroy
+         render json: {status: :no_content}
     end
 
 
@@ -44,7 +40,7 @@ class PromotionsController < ApplicationController
 
     private
     def promo_params 
-        params.permit(:promo_type, :product_id, :sku_free, :min_value, :min_quantity, :description,:percent_discount, :is_active, :id )
+        params.permit(:promo_type, :product_id, :min_value_cart, :min_value, :min_quantity, :description,:percent_discount, :is_active, :id, :free_item, :trigger, :specific_discount_amount)
     end
         
 end

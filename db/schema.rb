@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_071114) do
     t.integer "min_quantity"
     t.string "trigger"
     t.float "specific_discount_amount"
-    t.string "free_items", default: [], array: true
+    t.string "free_item"
     t.boolean "is_active", default: true
     t.float "min_value_cart"
     t.datetime "created_at", null: false
