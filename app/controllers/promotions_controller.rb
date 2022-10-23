@@ -40,7 +40,7 @@ class PromotionsController < ApplicationController
 
     private
     def promo_params 
-        params.permit(:promo_type, :product_id, :min_value_cart, :min_value, :min_quantity, :description,:percent_discount, :is_active, :id, :free_item, :trigger, :specific_discount_amount)
+        params.permit(:promo_type, :product_id, :min_value_cart, :min_value, :min_quantity, :description,:percent_discount, :is_active, :id, :free_item, :trigger, :specific_discount_amount,:drop_to)
     end
         
 end

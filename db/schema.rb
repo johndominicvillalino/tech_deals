@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_071114) do
     t.string "free_item"
     t.boolean "is_active", default: true
     t.float "min_value_cart"
+    t.float "drop_to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_promotions_on_product_id"
